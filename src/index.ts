@@ -8,7 +8,7 @@ import { FlatCompat } from "@eslint/eslintrc";
 
 const compat = new FlatCompat();
 
-export default tsESLint.config(
+const config = tsESLint.config(
   ...compat.extends("plugin:storybook/recommended"),
   {
     plugins: {
@@ -36,5 +36,18 @@ export default tsESLint.config(
   },
   eslint.configs.recommended,
   ...tsESLint.configs.recommended,
-  prettierRecommended
+  prettierRecommended,
+  {
+    ignores: [
+      "**/dist/",
+      "**/styled-system/",
+      "**/*.cjs",
+      "**/public/storybook/",
+      "**/.astro/",
+      "**/.storybook/",
+      "**/env.d.ts",
+    ],
+  }
 );
+
+export default config;
