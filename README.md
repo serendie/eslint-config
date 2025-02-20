@@ -14,14 +14,14 @@ npm install --save-dev @serendie/eslint-config
 
 ```javascript
 // eslint.config.js
-import serendieConfig from "@serendie/eslint-config";
+import { createConfig } from "@serendie/eslint-config";
 
-export default serendieConfig;
+export default createConfig();
 ```
 
 ### カスタマイズ設定
 
-設定をカスタマイズする場合は、`createConfig`関数を使用します：
+設定をカスタマイズする場合は、`createConfig`関数にオプションを渡します：
 
 ```javascript
 // eslint.config.js
