@@ -6,7 +6,7 @@ import eslint from "@eslint/js";
 import tsESLint from "typescript-eslint";
 import { FlatCompat } from "@eslint/eslintrc";
 const compat = new FlatCompat();
-export default tsESLint.config(...compat.extends("plugin:storybook/recommended"), {
+const config = tsESLint.config(...compat.extends("plugin:storybook/recommended"), {
     plugins: {
         "react-refresh": reactRefresh,
         "@pandacss": pandaCss,
@@ -29,4 +29,15 @@ export default tsESLint.config(...compat.extends("plugin:storybook/recommended")
             },
         ],
     },
-}, eslint.configs.recommended, ...tsESLint.configs.recommended, prettierRecommended);
+}, eslint.configs.recommended, ...tsESLint.configs.recommended, prettierRecommended, {
+    ignores: [
+        "**/dist/",
+        "**/styled-system/",
+        "**/*.cjs",
+        "**/public/storybook/",
+        "**/.astro/",
+        "**/.storybook/",
+        "**/env.d.ts",
+    ],
+});
+export default config;
